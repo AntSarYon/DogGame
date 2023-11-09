@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueAudioInfoSO : MonoBehaviour
+[CreateAssetMenu(fileName = "DialogueAudioInfo", menuName = "DialogueAudioInfoSO")]
+public class DialogueAudioInfoSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string id;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioClip dialogueTypingSoundClips;
+
+    [Range(1, 4)] public int soundFrecuencyLevel = 2;
+
+    [Range(-2, 2)] public float minPitch = 0.5f;
+    [Range(-2, 2)] public float maxPitch = 2f;
+
+    public bool stopAudioSource = true;
 }

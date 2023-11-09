@@ -47,21 +47,29 @@ public class playerController : MonoBehaviour
 
     private void ControlMove()
     {
-        //Si se esta recibiendo una direccion de movimiento...
-        if (InputManager.Instance.GetMoveDirection() != Vector2.zero)
+        //Si No hay un dialogo en progreso
+        if (!DialogueManager.Instance.dialogueIsPlaying)
         {
-            //Mantenemos activado el flag de animacion de "Moviendose"
-            mAnimator.SetBool("Moving", true);
+            //Si se esta recibiendo una direccion de movimiento,
+            if (InputManager.Instance.GetMoveDirection() != Vector2.zero)
+            {
+                //Mantenemos activado el flag de animacion de "Moviendose"
+                mAnimator.SetBool("Moving", true);
 
-            mRb.MovePosition(
-                transform.position + // <-- Tomamos como base su ubicacion actual
-                new Vector3(
-                    //Agregamos valor en base a los Inputs de movimiento
-                    InputManager.Instance.GetMoveDirection().x,
-                    InputManager.Instance.GetMoveDirection().y,
-                    0) * speed * sprintMultiplier * Time.fixedDeltaTime // <-- Multiplicamos en base a la velocidad y al Tiempo Delta
-                );
+                mRb.MovePosition(
+                    transform.position + // <-- Tomamos como base su ubicacion actual
+                    new Vector3(
+                        //Agregamos valor en base a los Inputs de movimiento
+                        InputManager.Instance.GetMoveDirection().x,
+                        InputManager.Instance.GetMoveDirection().y,
+                        0) * speed * sprintMultiplier * Time.fixedDeltaTime // <-- Multiplicamos en base a la velocidad y al Tiempo Delta
+                    );
+            }
+            else
+                //Caso contrario desactivamos el flag...
+                mAnimator.SetBool("Moving", false);
         }
+        
         else
             //Caso contrario desactivamos el flag...
             mAnimator.SetBool("Moving", false);
@@ -73,7 +81,7 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-        ManageAnimations();
+        ManageDirection();
 
         //Si se ha oprimido la accion de Ladrar
         if (InputManager.Instance.GetBarkPressed())
@@ -134,10 +142,6 @@ public class playerController : MonoBehaviour
     //--------------------------------------------------------------
 
     #region CONTROL DE ANIMACIONES
-    private void ManageAnimations()
-    {
-        ManageDirection();
-    }
 
     //--------------------------------------------------------------
     //FUNCION: Indicar Fin de animacion de Ladrido y desactivación de Flag
@@ -159,18 +163,23 @@ public class playerController : MonoBehaviour
     //FUNCION: Manejar la direccion en la que MIRA el Sprite
     private void ManageDirection()
     {
-        //Si el input de movimiento indica que se mueve a la derecha
-        if (InputManager.Instance.GetMoveDirection().x > 0)
-            //Invertimos el Sprite
-            mSpriteRenderer.flipX = true;
+        //Si no se esta reproduciendo dialogo
+        if (!DialogueManager.Instance.dialogueIsPlaying)
+        {
+            //Si el input de movimiento indica que se mueve a la derecha
+            if (InputManager.Instance.GetMoveDirection().x > 0)
+                //Invertimos el Sprite
+                mSpriteRenderer.flipX = true;
 
-        else if (InputManager.Instance.GetMoveDirection().x < 0)
-            //Mostramos el Sprite en su direccion original 
-            mSpriteRenderer.flipX = false;
+            else if (InputManager.Instance.GetMoveDirection().x < 0)
+                //Mostramos el Sprite en su direccion original 
+                mSpriteRenderer.flipX = false;
+
+            else
+                //Lo mantenemos como esta
+                mSpriteRenderer.flipX = mSpriteRenderer.flipX;
+        }
         
-        else
-            //Lo mantenemos como esta
-            mSpriteRenderer.flipX = mSpriteRenderer.flipX;
     }
 
     #endregion

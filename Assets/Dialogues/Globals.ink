@@ -1,1 +1,2 @@
-﻿
+VAR varGlobal = ""
+EXTERNAL ladrar()
