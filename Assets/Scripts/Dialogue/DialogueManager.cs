@@ -64,13 +64,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-            Destroy(this.gameObject);
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
+        //Declaramos la actual, como la unica instancia del Dialogue Manager
+        Instance = this; 
 
         //Inicializamos la clase de Variables de Dialogo
         // -> colocamos el Ink de Variables globales como atributo
