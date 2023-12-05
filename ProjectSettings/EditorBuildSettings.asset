@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LIVINGROOM.unity
     guid: faa11ed7120f41242a74f44d5b273eb2
+  - enabled: 1
+    path: Assets/Scenes/BATHROOM.unity
+    guid: 9a433aac8d168b24a9b4f7751343820f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 753fe81a13396b947857ba5517531d66, type: 2}

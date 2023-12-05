@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartFadeController : MonoBehaviour
+public class HUDController : MonoBehaviour
 {
     private Animator mAnimator;
 

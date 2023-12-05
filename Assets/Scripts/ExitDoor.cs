@@ -14,7 +14,7 @@ public class ExitDoor : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            SceneManager.LoadScene(nameNextScene);
+            FindObjectOfType<HUDController>().FadeInChangeScene(nameNextScene);
         }
     }
 }
