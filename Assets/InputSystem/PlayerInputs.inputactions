@@ -206,6 +206,17 @@
                 },
                 {
                     "name": "",
+                    "id": "aa4f6411-f7d4-4a06-ba18-feb4f64bef77",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "21ea1a27-f889-467c-9364-6ad137795f45",
                     "path": "<Keyboard>/enter",
                     "interactions": "",

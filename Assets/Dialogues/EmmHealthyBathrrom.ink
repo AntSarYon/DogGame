@@ -7,6 +7,4 @@ INCLUDE Globals.ink
 #speaker: EMMA #audio: typingSound3
 ¿DONDE PUSE LA TOALLA?
 
-~ ladrar()
-
 -> END
