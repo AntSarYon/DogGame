@@ -38,7 +38,7 @@ public class InkExternalFunctions
     public void ladrar()
     {
         //Disparamos el Trigger de la animacion de ladrar
-        GameObject.Find("Player").GetComponent<Animator>().SetTrigger("Bark");
+        GameObject.Find("PlayerNugget").GetComponent<Animator>().SetTrigger("Bark");
     }
 
     #endregion
