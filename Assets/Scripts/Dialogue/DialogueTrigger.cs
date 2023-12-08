@@ -8,7 +8,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject visualCue;
 
     [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON;
+    [SerializeField] public TextAsset inkJSON;
     private bool playerInRange;
 
     //------------------------------------------------------
@@ -21,6 +21,8 @@ public class DialogueTrigger : MonoBehaviour
         //Indicamos que el jugador no esta en rango
         playerInRange = false;
     }
+
+    //------------------------------------------------------
 
     private void Update()
     {

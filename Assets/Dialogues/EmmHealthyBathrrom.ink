@@ -4,7 +4,7 @@ INCLUDE Globals.ink
 
 
 === MAIN ===
-#speaker: EMMA #audio: typingSound3
-¿DONDE PUSE LA TOALLA?
-
+#speaker: EMMA #audio: andreO
+WHERE DID I LEAVE THE TOWEL?
+~ EnableTowel()
 -> END

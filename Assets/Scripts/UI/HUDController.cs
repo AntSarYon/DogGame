@@ -7,6 +7,9 @@ public class HUDController : MonoBehaviour
 {
     private Animator mAnimator;
 
+    private AudioSource mAudioSource;
+    [SerializeField] private AudioClip clipShower;
+
     [HideInInspector] public string nextSceneName;
 
     //--------------------------------------------------
@@ -14,6 +17,7 @@ public class HUDController : MonoBehaviour
     private void Awake()
     {
         mAnimator = GetComponent<Animator>();
+        mAudioSource = GetComponent<AudioSource>();
     }
 
     //--------------------------------------------------
@@ -24,6 +28,13 @@ public class HUDController : MonoBehaviour
         mAnimator.Play("FadeIn");
 
         Invoke(nameof(ChangeScene), 1.5f);
+    }
+
+    //--------------------------------------------------
+
+    public void PlayShower()
+    {
+        mAudioSource.PlayOneShot(clipShower,0.85f);
     }
 
     //--------------------------------------------------

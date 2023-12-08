@@ -4,8 +4,7 @@ INCLUDE Globals.ink
 
 
 === MAIN ===
-#speaker: EMMA #audio: typingSound3
-¡NUGGET, MI HERMOSO! NO SE QUE ATUENDO ELEGIR PARA EL DIA DE HOY.
-
-
+#speaker: EMMA #audio: andreO
+WHAT DO YOU THINK I SHOULD WEAR TODAY?
+~ EnableDress()
 -> END

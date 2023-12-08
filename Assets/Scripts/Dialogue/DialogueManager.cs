@@ -462,7 +462,7 @@ public class DialogueManager : MonoBehaviour
             mAudioSource.pitch = Random.Range(minPitch, maxPitch);
 
             //Hacemos que se reproduzca el sonido de Tipeo que haymos asignado
-            mAudioSource.PlayOneShot(dialogueTypingSoundClip, 0.5f);
+            mAudioSource.PlayOneShot(dialogueTypingSoundClip, 0.3f);
         }
     }
 

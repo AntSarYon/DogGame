@@ -17,7 +17,14 @@ public class playerController : MonoBehaviour
 
     //Variables de estado
     private bool isBarking = false;
-    private bool isSitting = false;
+    public bool isSitting = false;
+
+    [SerializeField] private GameObject PickUpZoneRight;
+    [SerializeField] private GameObject PickUpZoneLeft;
+
+    private bool hasObjectInMouth;
+
+    public bool HasObjectInMouth { get => hasObjectInMouth; set => hasObjectInMouth = value; }
 
     //--------------------------------------------------------------
 
@@ -28,6 +35,18 @@ public class playerController : MonoBehaviour
         mRb = GetComponent<Rigidbody2D>();
         mSpriteRenderer = GetComponent<SpriteRenderer>();
         mAudioSource = GetComponent<AudioSource>();
+
+        //Inicialmente no tiene nada en la Boca
+        hasObjectInMouth = false;
+    }
+
+    //--------------------------------------------------------------
+
+    private void Start()
+    {
+        //Desactivamos ambos PickupsZones
+        PickUpZoneLeft.SetActive(false);
+        PickUpZoneRight.SetActive(false);
     }
 
     //--------------------------------------------------------------
@@ -83,6 +102,8 @@ public class playerController : MonoBehaviour
     {
         ManageDirection();
 
+        ManagePickUpBoxes();
+
         //Si se ha oprimido la accion de Ladrar
         if (InputManager.Instance.GetBarkPressed())
         {
@@ -133,6 +154,37 @@ public class playerController : MonoBehaviour
             mAnimator.SetBool("Sprinting", false);
         }
     }
+
+    //----------------------------------------------------------------------------------------------
+
+    public void ManagePickUpBoxes()
+    {
+        //Si tiene objetos en la boca...
+        if (hasObjectInMouth)
+        {
+            //Si esta viendo a la derecha...
+            if (mSpriteRenderer.flipX == true)
+            {
+                PickUpZoneRight.SetActive(true);
+                PickUpZoneLeft.SetActive(false);
+            }
+            else
+            {
+                PickUpZoneRight.SetActive(false);
+                PickUpZoneLeft.SetActive(true);
+            }
+        }
+
+        //Si no tiene objetos en la boca...
+        else
+        {
+            //Ambos PickupObjexts estaran desactivados
+            PickUpZoneRight.SetActive(false);
+            PickUpZoneLeft.SetActive(false);
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------
 
     public void PlayBark()
     {

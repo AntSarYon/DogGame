@@ -8,8 +8,11 @@ public class UIMenuController : MonoBehaviour
     [Header("Panel de Creditos")]
     [SerializeField] private GameObject creditsPanel;
 
-    [Header("Panel de Creditos")]
+    [Header("Panel de Configuraciones")]
     [SerializeField] private GameObject settingsPanel;
+
+    [Header("Panel de Controles")]
+    [SerializeField] private GameObject controlsPanel;
 
     [Header("Clips de Audio")]
     [SerializeField] private AudioClip clipSelected;
@@ -35,6 +38,7 @@ public class UIMenuController : MonoBehaviour
         //Desactivamos el Panel de Creditos y Settings
         creditsPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        controlsPanel.SetActive(false);//
     }
 
     //------------------------------------------------------
@@ -67,6 +71,22 @@ public class UIMenuController : MonoBehaviour
     {
         //Desactivamos el Panel de Creditos
         settingsPanel.SetActive(false);
+    }
+
+    //------------------------------------------------------
+
+    public void OpenControlsPanel()
+    {
+        //Activamos el Panel de Creditos
+        controlsPanel.SetActive(true);
+    }
+
+    //------------------------------------------------------
+
+    public void CloseControlsPanel()
+    {
+        //Desactivamos el Panel de Creditos
+        controlsPanel.SetActive(false);
     }
 
     //------------------------------------------------------
